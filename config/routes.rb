@@ -1,4 +1,5 @@
 Portfolio::Application.routes.draw do
+
 #  get "statics_pages/home"
   match "root" => "static_pages#home"
 #  get "statics_pages/help"
@@ -9,4 +10,6 @@ Portfolio::Application.routes.draw do
   match "contact" => "static_pages#contact"
 
   match "news" => "static_pages#news"
+  match "signup" => "users#new"
+ 
  end
