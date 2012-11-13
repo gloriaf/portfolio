@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
   
-  before_save { |user| user.email=user.email.downcase }
+  before_save { self.email.downcase! }
   
   # name
   validates :name,  presence: true, length: {maximum: 50}
