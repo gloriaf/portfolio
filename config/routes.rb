@@ -1,7 +1,10 @@
 Portfolio::Application.routes.draw do
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   match "signup" => "users#new"
+  match "signin" =>  "sessions#new"
+  match "signout" => "sessions#destroy", :via => :delete
 
 # paginas estaticas
 #  get "statics_pages/home"
