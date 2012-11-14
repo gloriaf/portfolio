@@ -9,6 +9,8 @@
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
 #  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
+#  itprof          :boolean
 #
 
 require 'spec_helper'
@@ -29,8 +31,12 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:remember_token) }
+  it { should respond_to(:admin) }
+  it { should respond_to(:itprof) }
 
   it { should be_valid}
+  it { should_not be_admin}
+  it { should_not be_itprof}
   
   # name
   describe "cuando el nombre esta vacio" do
@@ -112,4 +118,23 @@ describe User do
     its(:remember_token) { should_not be_blank}
   end
   
+  # admin
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
+  
+  # itprof
+  describe "with itprof attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:itprof)
+    end
+
+    it { should be_itprof }
+  end
 end
