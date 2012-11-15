@@ -1,4 +1,5 @@
 FactoryGirl.define do
+#  Crea un usuario predefinido  
 #  factory :user do
 #    name     "Maria Gloria Fernandez"
 #    email    "mgfernandez@pabilos.com"
@@ -6,6 +7,7 @@ FactoryGirl.define do
 #    password_confirmation "galapaga"
 #  end
 
+# Crea usuarios genericos
   factory :user do
     sequence(:name)  { |n| "Person #{n}" }
     sequence(:email) { |n| "person_#{n}@example.com"}   
@@ -19,4 +21,11 @@ FactoryGirl.define do
       admin true  
     end
   end
+  
+#  crea microposts
+  factory :micropost do
+    content "Lorem ipsum"
+    user
+  end
+
 end

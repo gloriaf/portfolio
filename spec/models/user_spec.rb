@@ -10,7 +10,7 @@
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
-#  itprof          :boolean
+#  itprof          :boolean          default(FALSE)
 #
 
 require 'spec_helper'
@@ -33,6 +33,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:itprof) }
+  it { should respond_to(:microposts) }
 
   it { should be_valid}
   it { should_not be_admin}
@@ -136,5 +137,15 @@ describe User do
     end
 
     it { should be_itprof }
+  end
+  
+  describe "micropost associations" do
+    before { @user.save }
+    let!(:older_micropost) do 
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
+    end
   end
 end
