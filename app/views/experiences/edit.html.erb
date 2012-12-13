@@ -1,0 +1,16 @@
+<% provide(:title, 'Edit Experience') %>
+<h1> Edit Experience of <%= @user.name%></h1>
+
+<div class="row hero-unit">
+
+  <div class="span6 offset3">
+    
+    <%= form_for [@user, @experience] do |f| %>
+      <%= render 'experience' , f: f %>
+    
+      <%= f.submit "Update experience", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <li class="center" style="font-size: 1.2em"><%= link_to 'Back', user_experiences_path(@user)  %></li>
+  </div>
+</div>

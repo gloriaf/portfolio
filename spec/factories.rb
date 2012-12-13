@@ -28,4 +28,9 @@ FactoryGirl.define do
     user
   end
 
+  #  crea experiences
+  factory :experience do
+   sequence(:name) { |n| "Ruby Project #{n}" }
+  end
+  
 end

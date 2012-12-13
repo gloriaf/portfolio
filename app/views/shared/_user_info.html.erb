@@ -8,7 +8,7 @@
   <%= link_to "profile", current_user %>
 </span>
 <span>
-  <%= link_to "it experience", '#' %>
+  <%= link_to "it experience", user_experiences_path(current_user) %>
 </span>
 <span>
   <%= pluralize(current_user.microposts.count, "micropost") %>

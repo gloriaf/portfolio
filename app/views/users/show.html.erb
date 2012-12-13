@@ -6,8 +6,11 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
- 
+      <span>
+        <%= link_to "it experience", user_experiences_path(@user) %>
+      </span>
     </section>
+    
   </aside>
   <div class="span8">
     <% if @user.microposts.any? %>

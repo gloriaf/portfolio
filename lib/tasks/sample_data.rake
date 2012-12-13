@@ -23,6 +23,14 @@ namespace :db do
       content = Faker::Lorem.sentence(5)
       users.each { |user| user.microposts.create!(content: content) }
     end
+
+    users = User.all(limit: 3)
+    1.times do
+      name = "Rails project"
+      year = 2012
+      users.each { |user| user.experiences.create!(name: name, year: year) }
+    end
+    
   end
     
 end

@@ -1,0 +1,16 @@
+<% provide(:title, 'Show experience') %>
+<h1>show experience of <%= @user.name%></h1>
+
+<div class="row hero-unit">
+    <aside class="span6 offset3">
+      <p><b>Name:</b> <%= @experience.name %></p>
+      <p><b>Year:</b> <%= @experience.year%></p>
+      
+      <li style="font-size: 1.2em">
+        <%= link_to 'Back to experience list', user_experiences_path(@user) %>  |  
+        <%= link_to 'Edit experience', edit_user_experience_path(@user, @experience) %>  |
+        <%= link_to 'Remove experience', user_experience_path(@user, @experience), :confirm => 'Are you sure?', :method => :delete %>
+      </li>
+    </aside>
+</div>
+ 

@@ -118,7 +118,26 @@ describe "Authentication" do
           before { delete micropost_path(FactoryGirl.create(:micropost)) }
           specify { response.should redirect_to(signin_path) }
         end
+    end
+    
+    describe "in the Experiences controller" do
+      let(:user) { FactoryGirl.create(:user) }
+
+      describe "submitting to the create action" do
+        before { post experiences_path }
+        specify { response.should redirect_to(signin_path) }
       end
+
+      describe "submitting to the destroy action" do
+        before { delete experience_path(FactoryGirl.create(:experience, year: 2012, user_id: user.id)) }
+        specify { response.should redirect_to(signin_path) }
+      end
+      
+      describe "submitting to the update action" do
+        before { put experience_path(FactoryGirl.create(:experience, year: 2012, user_id: user.id)) }
+        specify { response.should redirect_to(signin_path) }
+      end
+    end
   end
   
 end

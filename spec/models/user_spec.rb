@@ -34,6 +34,7 @@ describe User do
   it { should respond_to(:admin) }
   it { should respond_to(:itprof) }
   it { should respond_to(:microposts) }
+  it { should respond_to(:experiences) }
 
   it { should be_valid}
   it { should_not be_admin}
@@ -158,4 +159,67 @@ describe User do
       its(:feed) { should_not include(unfollowed_post) }
     end
   end
+
+  describe "micropost associations" do
+    before { @user.save }
+    let!(:older_micropost) do 
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
+    end
+    
+    describe "status" do
+      let(:unfollowed_post) do
+        FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
+      end
+
+      its(:feed) { should include(newer_micropost) }
+      its(:feed) { should include(older_micropost) }
+      its(:feed) { should_not include(unfollowed_post) }
+    end
+  end
+  
+  describe "experience associations" do
+    before { @user.save }
+    
+    describe "order by year" do
+      let!(:older_experience) do 
+        FactoryGirl.create(:experience, year: 2000, user: @user, created_at: 1.day.ago)
+      end
+      let!(:newer_experience) do
+        FactoryGirl.create(:experience, year: 2012, user: @user, created_at: 1.day.ago)
+      end
+      it "should have the right experiences in the right order" do
+        @user.experiences.should == [newer_experience, older_experience]
+      end
+    end
+    describe "order by year" do
+      let!(:older_experience) do 
+        FactoryGirl.create(:experience, year: 2012, user: @user, created_at: 1.day.ago)
+      end
+      let!(:newer_experience) do
+        FactoryGirl.create(:experience, year: 2012, user: @user, created_at: 1.hour.ago)
+      end
+      it "should have the right experiences in the right order" do
+        @user.experiences.should == [newer_experience, older_experience]
+      end
+    end
+  end
+
+  describe "destoy associated experiences" do
+    before { @user.save }
+    let!(:newer_experience) do
+      FactoryGirl.create(:experience, year: 2012, user: @user, created_at: 1.hour.ago)
+    end
+    it "should destroy associated experiences" do
+      experiences = @user.experiences.dup
+      @user.destroy
+      experiences.should_not be_empty
+      experiences.each do |experiences|
+        Experience.find_by_id(experiences.id).should be_nil
+      end
+    end
+  end
+  
 end

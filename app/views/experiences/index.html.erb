@@ -1,0 +1,35 @@
+<% provide(:title, 'All experience') %>
+<h1><%= @user.name %> experience</h1>
+
+<div class="hero-unit">
+  <% if @user.experiences.count==0 %>
+      <h3>Add experience to <%= @user.name %> </h3>
+  <% end %>
+  <% if @user.experiences.any? %>
+    <h3>Total experience: <%= @user.experiences.count %></h3>
+    <table class="pretty">
+      <tr> 
+        <th><b>Name</b></th>
+        <th><b>Year </b></th>
+        <th></th>
+      </tr>
+    
+      <% @experiences.each do |experience| %>
+        <tr>
+          <td><%= experience.name %></td>
+          <td><%= experience.year %></td>
+          <td><%= link_to 'Experience Details', user_experience_path(@user, experience) %></td>
+        </tr>
+      <% end %>
+     </table>
+    <%= will_paginate @experiences %>
+  <% end %>
+  
+  <p> </p>
+  <li class="center" style="font-size: 1.2em">
+    <%= link_to 'Add new experience', new_user_experience_path(@user) %> |   
+    <%= link_to 'Go to User', user_path(@user) %> |
+    <%= link_to 'Go to users list', users_path %> 
+  </li>
+
+</div>

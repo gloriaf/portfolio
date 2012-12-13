@@ -1,0 +1,18 @@
+<% provide(:title, 'New Experience') %>
+<h1><%= @user.name %> new experience</h1>
+
+<div class="row hero-unit">
+  <div class="span6 offset3">
+    
+    <%= form_for [@user, @experience] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+     
+      <%= render 'experience' , f: f %>
+
+      <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+    <% end %>
+  
+    <li class="center" style="font-size: 1.2em"><%= link_to 'Back', user_experiences_path(@user)  %></li>
+
+  </div>
+</div>

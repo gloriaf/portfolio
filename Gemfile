@@ -21,8 +21,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'cucumber-rails-training-wheels'
   gem 'factory_girl_rails'
+  gem 'factory_girl'
 end
 
 group :production do
