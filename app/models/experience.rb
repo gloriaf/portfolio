@@ -1,5 +1,5 @@
 class Experience < ActiveRecord::Base
-  attr_accessible :desc, :framework, :info, :link, :name, :tools, :type, :year
+  attr_accessible :desc, :framework, :info, :link, :name, :tools, :type_experience, :year
   belongs_to :user
   
   default_scope order: ('experiences.year DESC, experiences.created_at DESC')

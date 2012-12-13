@@ -189,6 +189,32 @@ input {
   color: $grayLight;
 }
 
+/* experience */
+
+.experience {
+  margin: 15px;
+  border-collapse: collapse;
+  width: 100%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  text-align: left;
+}
+.experience th {
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 4px;
+  text-align: left;
+  border-bottom: 2px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.experience td {
+  font-size: 1.1em;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+
 aside {
   textarea {
     height: 100px;

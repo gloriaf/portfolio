@@ -5,6 +5,12 @@
     <aside class="span6 offset3">
       <p><b>Name:</b> <%= @experience.name %></p>
       <p><b>Year:</b> <%= @experience.year%></p>
+      <p><b>Type:</b> <%= @experience.type_experience%></p>
+      <p><b>Desc.:</b> <%= @experience.desc%></p>
+      <p><b>Link:</b>  <%= link_to @experience.name, @experience.link, :target => 'blank' %>    
+      <p><b>Framework:</b> <%= @experience.framework%></p>
+      <p><b>Tools:</b> <%= @experience.tools%></p>
+      <p><b>+ Info:</b> <%= @experience.info%></p>
       
       <li style="font-size: 1.2em">
         <%= link_to 'Back to experience list', user_experiences_path(@user) %>  |  

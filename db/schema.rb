@@ -11,23 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116085400) do
+ActiveRecord::Schema.define(:version => 20121213152232) do
 
   create_table "experiences", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
     t.string   "desc"
     t.string   "link"
-    t.string   "type"
+    t.string   "type_experience"
     t.integer  "year"
     t.string   "framework"
     t.string   "tools"
     t.string   "info"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "experiences", ["user_id", "year", "created_at"], :name => "index_experiences_on_user_id_and_year_and_created_at"
+  add_index "experiences", ["user_id", "year"], :name => "index_experiences_on_user_id_and_year"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"

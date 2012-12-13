@@ -6,23 +6,32 @@
       <h3>Add experience to <%= @user.name %> </h3>
   <% end %>
   <% if @user.experiences.any? %>
-    <h3>Total experience: <%= @user.experiences.count %></h3>
-    <table class="pretty">
-      <tr> 
-        <th><b>Name</b></th>
-        <th><b>Year </b></th>
-        <th></th>
-      </tr>
-    
-      <% @experiences.each do |experience| %>
-        <tr>
-          <td><%= experience.name %></td>
-          <td><%= experience.year %></td>
-          <td><%= link_to 'Experience Details', user_experience_path(@user, experience) %></td>
+    <ol class="experience">
+      <table>
+        <tr> 
+          <th>Year</b></th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Framework</th>
+          <th>Tools</th>
+          <th></th>
         </tr>
-      <% end %>
-     </table>
-    <%= will_paginate @experiences %>
+    
+        <% @experiences.each do |experience| %>
+          <tr>
+            <td><%= experience.year %></td>
+            <td><%= experience.name %></td>
+            <td><%= experience.type_experience %></td>
+            <td><%= experience.desc %></td>
+            <td><%= experience.framework %></td>
+            <td><%= experience.tools %></td>
+            <td><%= link_to 'Details', user_experience_path(@user, experience) %></td>
+          </tr>
+        <% end %>
+      </table>
+      <%= will_paginate @experiences %>
+    </ol>
   <% end %>
   
   <p> </p>
