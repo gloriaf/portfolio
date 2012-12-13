@@ -35,8 +35,13 @@
   <% end %>
   
   <p> </p>
+  <% if current_user.admin? || current_user?(@user) %>
+    <li class="center" style="font-size: 1.2em">
+      <%= link_to 'Add new experience', new_user_experience_path(@user) %>    
+    </li>
+  <% end %>
+
   <li class="center" style="font-size: 1.2em">
-    <%= link_to 'Add new experience', new_user_experience_path(@user) %> |   
     <%= link_to 'Go to User', user_path(@user) %> |
     <%= link_to 'Go to users list', users_path %> 
   </li>

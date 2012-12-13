@@ -13,10 +13,15 @@
       <p><b>+ Info:</b> <%= @experience.info%></p>
       
       <li style="font-size: 1.2em">
-        <%= link_to 'Back to experience list', user_experiences_path(@user) %>  |  
-        <%= link_to 'Edit experience', edit_user_experience_path(@user, @experience) %>  |
-        <%= link_to 'Remove experience', user_experience_path(@user, @experience), :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to 'Back to experience list', user_experiences_path(@user) %>   
       </li>
+      
+      <% if current_user.admin? || current_user?(@user) %>
+        <li style="font-size: 1.2em">
+          <%= link_to 'Edit experience', edit_user_experience_path(@user, @experience) %>  |
+          <%= link_to 'Remove experience', user_experience_path(@user, @experience), :confirm => 'Are you sure?', :method => :delete %>
+        </li>
+      <% end %>
     </aside>
 </div>
  

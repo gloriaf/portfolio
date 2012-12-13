@@ -24,7 +24,7 @@ class ExperiencesController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user)
+    @user = User.find(params[:user_id])
     @experience = current_user.experiences.find(params[:id])
   end
 
