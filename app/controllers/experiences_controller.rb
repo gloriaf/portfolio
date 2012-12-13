@@ -25,7 +25,7 @@ class ExperiencesController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @experience = current_user.experiences.find(params[:id])
+    @experience = @user.experiences.find(params[:id])
   end
 
   def destroy
