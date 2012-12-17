@@ -31,6 +31,8 @@ FactoryGirl.define do
   #  crea experiences
   factory :experience do
    sequence(:name) { |n| "Ruby Project #{n}" }
+   year 2012
+   user
   end
   
 end

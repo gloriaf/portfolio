@@ -16,8 +16,13 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
   gem 'rspec-rails'
+  gem 'simplecov', :require => false
   gem 'annotate'
+  gem 'simplecov', :require => false
 end
 
 group :test do

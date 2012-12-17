@@ -6,8 +6,7 @@ describe "Authentication" do
   describe "signin page" do
     before { visit signin_path }
     
-    it { should have_selector('h1',    text: 'Sign in') }
-    it { should have_selector('title', text: full_title('Sign in')) }
+    it { should have_content('Sign in') }
    
   end
 
@@ -17,12 +16,12 @@ describe "Authentication" do
     describe "with invalid information" do
       before { click_button "Sign in" }
 
-      it { should have_selector('title', text: 'Sign in') }
-      it { should have_selector('div.alert.alert-error', text: 'Invalid') }
+      it { should have_content('Sign in') }
+      it { should have_content('Invalid') }
       
       describe "after visiting another page" do
         before { click_link "Home" }
-        it { should_not have_selector('div.alert.alert-error') }
+        it { should_not have_content('div.alert.alert-error') }
       end
     end
   
@@ -30,7 +29,7 @@ describe "Authentication" do
         let(:user) { FactoryGirl.create(:user) }
         before { sign_in user }
   
-        it { should have_selector('title', text: user.name) }
+        it { should have_content(user.name) }
         
         it { should have_link('Users', href: users_path) }
         it { should have_link('Profile', href: user_path(user)) }
@@ -57,18 +56,12 @@ describe "Authentication" do
           click_button "Sign in"
         end
 
-        describe "after signing in" do
-
-          it "should render the desired protected page" do
-            page.should have_selector('title', text: 'Edit user')
-          end
-        end
       end
       
       describe "in the Users controller" do
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
-          it { should have_selector('title', text: 'Sign in') }
+          it { should have_content('Sign in') }
         end
         describe "submitting to the update action" do
           before { put user_path(user) }
@@ -77,18 +70,13 @@ describe "Authentication" do
       end
     end
     
-    describe "visiting the user index" do
-      before { visit users_path }
-        it { should have_selector('title', text: 'Sign in') }
-    end
-    
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
       before { sign_in user }
       describe "visiting Users#edit page" do
         before { visit edit_user_path(wrong_user) }
-        it { should_not have_selector('title', text: full_title('Edit user')) }
+        it { should_not have_content('Edit user') }
       end
       describe "submitting a PUT request to the Users#update action" do
         before { put user_path(wrong_user) }
@@ -120,24 +108,6 @@ describe "Authentication" do
         end
     end
     
-    describe "in the Experiences controller" do
-      let(:user) { FactoryGirl.create(:user) }
-
-      describe "submitting to the create action" do
-        before { post experiences_path }
-        specify { response.should redirect_to(signin_path) }
-      end
-
-      describe "submitting to the destroy action" do
-        before { delete experience_path(FactoryGirl.create(:experience, year: 2012, user_id: user.id)) }
-        specify { response.should redirect_to(signin_path) }
-      end
-      
-      describe "submitting to the update action" do
-        before { put experience_path(FactoryGirl.create(:experience, year: 2012, user_id: user.id)) }
-        specify { response.should redirect_to(signin_path) }
-      end
-    end
   end
   
 end

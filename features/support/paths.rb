@@ -15,13 +15,23 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
-
+    when /the login page/
+      signin_path
+    when /^the show page for "([^"]*)"$/
+      user_path(User.find_by_name($1).id)
+    when /^the experience page for "([^"]*)"$/
+      user_experiences_path(User.find_by_name($1).id)
+    when /^the new experience page for "([^"]*)"$/
+      user=User.find_by_name($1)
+      new_user_experience_path(user)
+    when /^the show experience page "([^"]*)" of "([^"]*)"$/
+      user=User.find_by_name($2)
+      experience=user.experiences.find_by_name($1)
+      user_experience_path(user, experience)
+    when /^the edit experience page "([^"]*)" of "([^"]*)"$/
+      user=User.find_by_name($2)
+      expereince=user.experiences.find_by_name($1)
+      edit_user_experience_path(user, expereince)
     else
       begin
         page_name =~ /^the (.*) page$/

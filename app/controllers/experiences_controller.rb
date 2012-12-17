@@ -17,7 +17,7 @@ class ExperiencesController < ApplicationController
     @experience = @user.experiences.build(params[:experience])
     if @experience.save
       flash[:success] = "Experience created!"
-      redirect_to user_experience_path(@user, @experience)
+      redirect_to user_experiences_path(@user)
     else
       render :new
     end
