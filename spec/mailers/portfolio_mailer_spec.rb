@@ -5,19 +5,22 @@ describe PortfolioMailer do
     @user = FactoryGirl.create(:user)
 #    sign_in @user
     @experience = FactoryGirl.create(:experience, user: @user)
+    @experiences = @user.experiences.all
+
+    @mail_to = @user.email
   end
 
   describe "summary_experience" do
-    let(:mail) { PortfolioMailer.summary_experience(@user, @experience) }
+    let(:mail) { PortfolioMailer.summary_experience(@user, @experiences, @mail_to) }
 
     it "renders the headers" do
       mail.subject.should eq("Summary experience")
-      mail.to.should eq([@user.email])
-      mail.from.should eq(["portfolio@pabilos.com"])
+      mail.to.should eq([@mail_to])
+      mail.from.should eq(["info@pabilos.com"])
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("Hi")
+      mail.body.encoded.should match("Summary of experience")
     end
   end
 

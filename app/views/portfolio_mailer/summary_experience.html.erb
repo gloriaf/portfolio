@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1 style="text-align: center" ><%= @user.name %></h1>
+    <h2 style="text-align: center" >Summary of experience</h2>
+    <% if @user.experiences.any? %>
+      <table style="width: 100%" >
+        <tr style="text-align: left" > 
+          <th>Year</b></th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Framework</th>
+          <th>Tools</th>
+          <th></th>
+        </tr>
+    
+        <% @experiences.each do |experience| %>
+          <tr  style="text-align: left" >
+            <td><%= experience.year %></td>
+            <td><%= experience.name %></td>
+            <td><%= experience.type_experience %></td>
+            <td><%= experience.desc %></td>
+            <td><%= experience.framework %></td>
+            <td><%= experience.tools %></td>
+          </tr>
+        <% end %>
+      </table>
+  <% end %>
+    <p>Thanks for use Portfolio of Projects and have a great day!</p>
+  </body>
+</html>

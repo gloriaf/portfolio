@@ -54,7 +54,8 @@ class ExperiencesController < ApplicationController
   def summary
     @user = User.find(params[:user_id])
     @experiences = @user.experiences.all
-    PortfolioMailer.summary_experience(@user, @experience).deliver
+    @mail_to = current_user.email
+    PortfolioMailer.summary_experience(@user, @experiences, @mail_to).deliver
     redirect_to user_experiences_path(@user)
   end
   

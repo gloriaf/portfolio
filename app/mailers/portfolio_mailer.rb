@@ -1,5 +1,5 @@
 class PortfolioMailer < ActionMailer::Base
-  default from: "portfolio@pabilos.com"
+  default from: "info@pabilos.com"
 
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -7,12 +7,13 @@ class PortfolioMailer < ActionMailer::Base
   #
   #   en.portfolio_mailer.summary_experience.subject
   #
-  def summary_experience(user, experiences)
+  def summary_experience(user, experiences, mail_to)
     @user = user
     @experiences = experiences
-    @greeting = "Hi"
+    @mail_to = mail_to
+    @greeting = "This is the summary of experience of #{@user.name}"
 
-    mail to: @user.email, subject: 'Summary experience'
+    mail to: @mail_to, subject: 'Summary experience'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
