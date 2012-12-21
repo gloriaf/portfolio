@@ -35,6 +35,10 @@
   <% end %>
   
   <p> </p>
+  <p>
+    <%= link_to 'Send the summary of the experience by email', summary_user_experiences_path(@user) %>    
+  </p>
+
   <% if current_user.admin? || current_user?(@user) %>
     <li class="center" style="font-size: 1.2em">
       <%= link_to 'Add new experience', new_user_experience_path(@user) %>    
@@ -46,4 +50,5 @@
     <%= link_to 'Go to users list', users_path %> 
   </li>
 
+      
 </div>

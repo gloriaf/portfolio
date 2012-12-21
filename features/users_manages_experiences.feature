@@ -17,7 +17,7 @@ Feature: User manges experinces
 	And I fill in "Name" with "Test"
 	And I fill in "Year" with "2012"
 	When I press "Create"
-	Then I should be on the show experience page "Test" of "Mary"
+	Then I should be on the experience page for "Mary"
 	And I should see "Test"
 
     Scenario: User not add a new experience	    
@@ -35,37 +35,37 @@ Feature: User manges experinces
     Scenario: Show a experience of user
         Given the following experiences exists for "Mary"
 	And I am on the experience page for "Mary"
-	When I go to the show experience page "Ruby Project 2" of "Mary"
 #	Then show me the page
+	When I go to the show experience page "Ruby Project 3" of "Mary"
 	Then I should see "Experience of Mary"
-	And I should see "Ruby Project 2" 
+	And I should see "Ruby Project 3" 
     
     Scenario: Show experience about a user and back to experience list
         Given the following experiences exists for "Mary"
 	And I am on the experience page for "Mary"
 #	Then show me the page
-	When I go to the show experience page "Ruby Project 4" of "Mary"
+	When I go to the show experience page "Ruby Project 5" of "Mary"
 	Then I should see "Experience of Mary"
 	When I follow "Back to experience list"
 	Then I should be on the experience page for "Mary"
     
     Scenario: Show experience about a user and edit
         Given the following experiences exists for "Mary"
-	And I am on the show experience page "Ruby Project 6" of "Mary"
+	And I am on the show experience page "Ruby Project 7" of "Mary"
 	When I follow "Edit experience"
-	Then I should be on the edit experience page "Ruby Project 6" of "Mary"
+	Then I should be on the edit experience page "Ruby Project 7" of "Mary"
 	And I should see "Edit Experience of Mary" 
     
    Scenario: Edit and update experience 
         Given the following experiences exists for "Mary"
-	And I am on the edit experience page "Ruby Project 8" of "Mary"
+	And I am on the edit experience page "Ruby Project 9" of "Mary"
 	Then I should see "Edit Experience of Mary"
 	When I press "Update experience"
-	Then I should be on the show experience page "Ruby Project 8" of "Mary"
+	Then I should be on the show experience page "Ruby Project 9" of "Mary"
 
    Scenario: Edit and not update experience 
         Given the following experiences exists for "Mary"
-	And I am on the edit experience page "Ruby Project 10" of "Mary"
+	And I am on the edit experience page "Ruby Project 11" of "Mary"
 	Then I should see "Edit Experience of Mary"
 	When I fill in "Year" with "0"
 	And I press "Update experience"
@@ -74,7 +74,7 @@ Feature: User manges experinces
 
    Scenario: Edit and back to show page 
         Given the following experiences exists for "Mary"
-	And I am on the edit experience page "Ruby Project 12" of "Mary"
+	And I am on the edit experience page "Ruby Project 13" of "Mary"
 	Then I should see "Edit Experience of Mary"
 	When I follow "Back"
 	Then I should be on the experience page for "Mary"

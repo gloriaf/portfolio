@@ -1,6 +1,8 @@
 Portfolio::Application.routes.draw do
   resources :users do
-    resources :experiences
+    resources :experiences do
+        get 'summary', on: :collection
+    end
   end
   resources :sessions,    only: [:new, :create, :destroy]
   resources :microposts,  only: [:create, :destroy]
@@ -17,5 +19,8 @@ Portfolio::Application.routes.draw do
   match "signup" =>  "users#new"
   match "signin" =>  "sessions#new"
   match "signout" => "sessions#destroy", :via => :delete
+  
+  # emails
+  match "summary" =>  "experiences#summary"
   
 end

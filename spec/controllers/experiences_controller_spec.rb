@@ -155,4 +155,16 @@ describe ExperiencesController do
       response.should redirect_to(user_experiences_path(@user))
     end
   end
+  
+  describe "experience#summary_by_email" do
+    before :each do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      @experience  = FactoryGirl.create(:experience, user: @user)
+    end
+    it "should send an email" do
+      
+    end
+
+  end
 end
