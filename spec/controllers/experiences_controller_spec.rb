@@ -160,10 +160,10 @@ describe ExperiencesController do
     before :each do
       @user = FactoryGirl.create(:user)
       sign_in @user
-      @experience  = FactoryGirl.create(:experience, user: @user)
     end
-    it "should send an email" do
-      
+    it "should call the model method that delivery" do
+      get :summary, user_id: @user.id
+      response.should redirect_to(user_experiences_path(@user))
     end
 
   end
