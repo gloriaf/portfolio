@@ -10,6 +10,7 @@ class ExperiencesController < ApplicationController
   def new
     @user = User.find(current_user)
     @experience = Experience.new
+    @experience.year=2012
   end
 
   def create

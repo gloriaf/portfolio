@@ -1,4 +1,9 @@
 Portfolio::Application.routes.draw do
+
+  # Authentication
+  match '/auth/:provider/callback' => 'authentications#create'
+
+  resources :authentications
   resources :users do
     resources :experiences do
         get 'summary', on: :collection
@@ -22,5 +27,5 @@ Portfolio::Application.routes.draw do
   
   # emails
   match "summary" =>  "experiences#summary"
-  
+ 
 end

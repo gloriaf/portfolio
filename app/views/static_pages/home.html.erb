@@ -19,7 +19,12 @@
     <h2>
       This page presents the experience of IT professionals based on the development of IT projects
     </h2>
+    <p>
       <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+    </p>
+    <p>
+      <%= link_to "Sign in with Twitter", "/auth/twitter", class: "btn btn-large btn-primary" %>  
+    </p>
     <h4>
       If you are already registered  <%= link_to "Sign in", signin_path %>
     </h4>

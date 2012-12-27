@@ -2,6 +2,12 @@
 <h1><%= @user.name %> experience</h1>
 
 <div class="hero-unit">
+  <p>
+    <b>Experience</b> as a general concept comprises knowledge of or skill of some thing or some event gained through involvement in or exposure to that thing or event.
+  </p>
+  <p>
+    In this list we're talking about "the something" in which we have experience
+  </p>
   <% if @user.experiences.count==0 %>
       <h3>Add experience to <%= @user.name %> </h3>
   <% end %>
