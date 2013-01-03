@@ -107,10 +107,12 @@
         1,
         1,
         null,
+        1,
+        null,
         null,
         null,
         1,
-        5,
+        null,
         null,
         null,
         1,
@@ -123,6 +125,7 @@
         1,
         null,
         1,
+        null,
         null
       ],
       "/Users/marygloriafernandezfernandez/Personal/pabilos/portfolio/app/controllers/experiences_controller.rb": [
@@ -263,6 +266,9 @@
       ],
       "/Users/marygloriafernandezfernandez/Personal/pabilos/portfolio/app/controllers/sessions_controller.rb": [
         1,
+        1,
+        1,
+        null,
         1,
         null,
         null,
@@ -457,6 +463,6 @@
         null
       ]
     },
-    "timestamp": 1356624727
+    "timestamp": 1357206040
   }
 }

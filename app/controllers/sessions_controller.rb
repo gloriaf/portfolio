@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  require 'omniauth-twitter'
+  require 'omniauth'
+
   def new
     
   end
