@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13.rc1'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
